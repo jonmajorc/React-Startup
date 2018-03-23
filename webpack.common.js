@@ -5,16 +5,7 @@ const webpack = require('webpack')
 
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
-  devServer: {
-    contentBase: './dist',
-    hot: true,
-  },
   entry: path.resolve(__dirname,'src/index.js'),
-  /* externals: {
-    "react": "React",
-    "react-dom": "ReactDOM"
-  }, */
   module: {
     rules: [
       {
@@ -94,24 +85,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
   },
-  plugins: [
-    new DashboardPlugin(),
-    new HtmlWebPackPlugin({
-      template: __dirname + '/src/index.html',
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-      },
-      inject: true,
-    }),
-    new webpack.NamedModulesPlugin(),
-
-    /**
-     * Fix HotModuleReplacementPlugin to work with tsx file.
-     * Right now if the entry is a TSX file the HMR is broken
-     */
-    new webpack.HotModuleReplacementPlugin(),
-  ],
   resolve:{
     extensions:['*', '.ts', '.tsx', '.js', '.jsx', '.json']
   },
