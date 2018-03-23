@@ -7,7 +7,11 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const common = require('./webpack.common')
 
-module.exports = merge(common('production'), {
+
+const NODE_ENV = JSON.stringify('production')
+
+
+module.exports = merge(common(NODE_ENV), {
   devtool: 'source-map',
   plugins: [
 
@@ -42,7 +46,7 @@ module.exports = merge(common('production'), {
     }),
     // Tells React to build in either dev or prod modes. https://facebook.github.io/react/downloads.html (See bottom)
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env.NODE_ENV': NODE_ENV,
       __DEV__: false
     }),
   ],

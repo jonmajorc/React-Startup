@@ -5,7 +5,11 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const common = require('./webpack.common')
 
-module.exports = merge(common('development'), {
+
+const NODE_ENV = JSON.stringify('development'),
+
+
+module.exports = merge(common(NODE_ENV), {
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     contentBase: './dist',
@@ -33,7 +37,7 @@ module.exports = merge(common('development'), {
     new webpack.HotModuleReplacementPlugin(),
     // Tells React to build in either dev or prod modes. https://facebook.github.io/react/downloads.html (See bottom)
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
+      'process.env.NODE_ENV': NODE_ENV,
       __DEV__: true
     }),
   ],
