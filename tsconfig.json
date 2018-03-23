@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react",
+    "outDir": "./build/",
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "moduleResolution": "node",
+    "target": "es6",
+    "module": "es6",
+    "baseUrl": "src",
+  },
+  "include": [
+    "**/*"
+  ],
+  "exclude": [
+    "scss",
+    "statics/*",
+  ]
+}

@@ -1,0 +1,11 @@
+* {
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}

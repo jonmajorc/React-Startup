@@ -1,0 +1,7 @@
+input {
+  padding: 5px;
+
+  &:focus {
+    outline: 1px dotted blue;
+  }
+}
