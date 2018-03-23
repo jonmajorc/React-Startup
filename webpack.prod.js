@@ -1,12 +1,25 @@
 const path = require('path')
 const DashboardPlugin = require('webpack-dashboard/plugin')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const common = require('./webpack.common')
 
-module.exports = merge(common, {
+module.exports = merge(common('production'), {
+  devtool: 'source-map',
   plugins: [
+
+    // generate and external css file with a hash in the file name
+    // new ExtractTextPlugin('[name].[contenthash].css'),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    }),
+    
     new HtmlWebPackPlugin({
       template: __dirname + '/src/index.html',
       favicon: 'src/favicon.ico', // need to add
@@ -23,6 +36,9 @@ module.exports = merge(common, {
         minifyURLs: true,
       },
       inject: true,
+    }),
+    new UglifyJSPlugin({
+      sourceMap: true
     }),
     // Tells React to build in either dev or prod modes. https://facebook.github.io/react/downloads.html (See bottom)
     new webpack.DefinePlugin({

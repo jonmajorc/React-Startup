@@ -5,7 +5,7 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const common = require('./webpack.common')
 
-module.exports = merge(common, {
+module.exports = merge(common('development'), {
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     contentBase: './dist',
