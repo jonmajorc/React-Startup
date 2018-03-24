@@ -6,6 +6,7 @@ const webpack = require('webpack')
 
 
 module.exports = env => {
+  console.log('env is', env)
 
   const useStyleLoaders = [
     'style-loader',

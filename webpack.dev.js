@@ -8,7 +8,7 @@ const common = require('./webpack.common')
 
 const NODE_ENV = JSON.stringify('development'),
 
-
+// TODO: https://github.com/webpack/webpack/issues/6460 OR https://webpack.js.org/guides/environment-variables/
 module.exports = merge(common(NODE_ENV), {
   devtool: 'cheap-module-eval-source-map',
   devServer: {
